@@ -5,7 +5,7 @@ import firebaseApp from "../credenciales";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
 
-const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategoras }) => {
+const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategorias }) => {
     async function eliminarTarea(idTareaAEliminar) {
         // crear nuevo array de tareas
         const nvoArrayTareas = arrayCategorias.filter(
@@ -15,28 +15,52 @@ const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategoras }
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
         updateDoc(docuRef, { categorias: [...nvoArrayTareas] });
         //actualizar state
-        setArrayCategoras(nvoArrayTareas);
+        setArrayCategorias(nvoArrayTareas);
     }
     return (
         <Container>
             <Stack>
+                <h1>Ingresos</h1>
                 {arrayCategorias.map((objetoTarea) => {
-                    return (
-                        <div key={objetoTarea.id}>
-                            <Row key={objetoTarea.id}>
-                                <Col>{objetoTarea.descripcion}</Col>
-                                <Col>
-                                    <Button
-                                        variant="danger"
-                                        onClick={() => eliminarTarea(objetoTarea.id)}
-                                    >
-                                        Eliminar Tarea
-                                    </Button>
-                                </Col>
-                            </Row>
-                            <hr />
-                        </div>
-                    );
+                    if(objetoTarea.tipoCategoria == "Ingreso"){
+                        return (
+                            <div key={objetoTarea.id}>
+                                <Row key={objetoTarea.id}>
+                                    <Col>{objetoTarea.descripcion}</Col>
+                                    <Col>
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => eliminarTarea(objetoTarea.id)}
+                                        >
+                                            Eliminar Tarea
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                <hr />
+                            </div>
+                        );
+                    }
+                })}
+                <h1>Egresos</h1>
+                {arrayCategorias.map((objetoTarea) => {
+                    if(objetoTarea.tipoCategoria == "Egreso"){
+                        return (
+                            <div key={objetoTarea.id}>
+                                <Row key={objetoTarea.id}>
+                                    <Col>{objetoTarea.descripcion}</Col>
+                                    <Col>
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => eliminarTarea(objetoTarea.id)}
+                                        >
+                                            Eliminar Tarea
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                <hr />
+                            </div>
+                        );
+                    }
                 })}
             </Stack>
         </Container>
