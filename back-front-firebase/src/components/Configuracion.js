@@ -13,8 +13,7 @@ const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
     const [arrayCategorias, setArrayCategorias] = useState(null);
-    const fakeData = [
-    ];
+
     const [agregarCategoria, setAgregarCategoria] = useState(false);
     async function buscarCategoriaDocumentOrCrearDocumento(idDocumento) {
         //crear referencia al documento

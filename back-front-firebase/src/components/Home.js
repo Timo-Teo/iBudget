@@ -8,6 +8,8 @@ import AgregarIngreso from "./AgregarIngreso";
 import AgregarSalida from "./AgregarSalida";
 import AgregarMeta from "./AgregarMeta";
 import ListadoMetas from "./ListadoMetas";
+import ListadoDeudas from "./ListadoDeudas";
+import AgregarDeuda from "./AgregarDeuda";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -25,6 +27,7 @@ const Home = ({ correoUsuario }) => {
   const [configuracion, setConfiguracion] = useState(false);
   const [miBilletera, setMiBilletera] = useState(true);
   const [agregarMeta, setAgregarMeta] = useState(false)
+  const [agregarDeuda, setAgregarDeuda] = useState(false);
 
   const fakeData = [
   ];
@@ -58,6 +61,7 @@ const Home = ({ correoUsuario }) => {
       setArraySalida(egresosFetchada);
       setArrayIngresos(ingresosFetchada);
       setArrayMetas(metasFetchada);
+      setArrayDeudas(deudasFetchadas);
         ingresosFetchada.map(ingreso=>(
             saldoIngresos += parseFloat(ingreso.monto)
 
@@ -153,6 +157,39 @@ const Home = ({ correoUsuario }) => {
                                 onClose={() => setAgregarMeta(false)}
                             />
                         </Row>
+                        <Row>
+                            <Row>
+                                <Col><h1>Deudas por pagar</h1></Col>
+                                <Col>
+                                    <Button onClick={()=>setAgregarDeuda(true)}>Agregar</Button>
+                                </Col>
+                            </Row>
+                            <Row>
+                                {arrayDeudas?(
+                                    <div>
+                                        {arrayDeudas.map((objetoDeuda) => {
+                                            return(
+                                                <ListadoDeudas
+                                                    key={objetoDeuda.id}
+                                                    deuda={objetoDeuda}
+                                                    correoUsuario = {correoUsuario}
+                                                    arrayDeudas={arrayDeudas}
+                                                    setArrayDeudas={setArrayDeudas}
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                ):(<p>No existen deudas</p>)}
+                            </Row>
+                            <AgregarDeuda
+                                arrayDeudas={arrayDeudas}
+                                setArrayDeudas={setArrayDeudas}
+                                correoUsuario={correoUsuario}
+                                open={agregarDeuda}
+                                onClose={() => setAgregarDeuda(false)}
+                            />
+                        </Row>
+
 
                     </div>
                 ):(

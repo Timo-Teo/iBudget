@@ -1,10 +1,6 @@
 import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
-
-import firebaseApp from "../credenciales";
-import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import AgregarMonto from "./AgregarMonto";
-const firestore = getFirestore(firebaseApp);
 
 const ListadoMetas = ({ meta,correoUsuario,arrayMeta,setArrayMeta, }) => {
     const [agregarMonto, setAgregarMonto]=useState(false)

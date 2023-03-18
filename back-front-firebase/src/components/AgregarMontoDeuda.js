@@ -4,40 +4,45 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import firebaseApp from "../credenciales";
 import {getFirestore, updateDoc, doc, getDoc} from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
-const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto,montoId, open, onClose }) => {
+const AgregarMontoDeuda = ({correoUsuario, setArrayDeudas, deuda,arrayDeudas, open, onClose }) => {
 
-    var [arrayMetas, setArrayMetas] = useState([])
-    async function eliminarMeta(idMetaAEliminar) {
+    var [arrayDeuda, setArrayDeuda] = useState([])
+    async function eliminarDeuda(idDeudaAEliminar) {
         // crear nuevo array de tareas
-        const nvoArrayMeta = arrayMonto.filter(
-            (objetoMeta) => objetoMeta.id != idMetaAEliminar
+        const nvoArrayDeuda = arrayDeudas.filter(
+            (objetoDeuda) => objetoDeuda.id != idDeudaAEliminar
         );
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
-        updateDoc(docuRef, { metas: [...nvoArrayMeta] });
+        updateDoc(docuRef, { deudas: [...nvoArrayDeuda] });
         //actualizar state
-        arrayMetas = nvoArrayMeta;
+        arrayDeuda = nvoArrayDeuda;
     }
 
     async function update(e) {
-        await eliminarMeta(meta.id)
+        await eliminarDeuda(deuda.id)
         e.preventDefault();
         const monto = e.target.formMonto.value;
-        const montoPagado = parseFloat(meta.montoPagado)+parseFloat(monto)
+        const montoPagado = parseFloat(deuda.montoPagado)+parseFloat(monto)
         // crear nuevo array de tareas
-        const nvoArrayMeta = [
-            ...arrayMetas,
+        const nvoArrayDeuda = [
+            ...arrayDeuda,
             {
                 id: +new Date(),
-                descripcion: meta.descripcion,
-                monto: meta.monto,
-                montoPorPagar: (parseFloat(meta.monto)-montoPagado),
+                razon: deuda.razon,
+                fecha: deuda.fecha,
+                descripcion: deuda.descripcion,
+                monto: deuda.monto,
+                acreedor:deuda.acreedor,
+                email:deuda.email,
+                montoPorPagar: (parseFloat(deuda.monto)-montoPagado),
                 montoPagado: montoPagado,
             },
         ];
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
-        updateDoc(docuRef, { metas: [...nvoArrayMeta] });
+        updateDoc(docuRef, { deudas: [...nvoArrayDeuda] });
+        setArrayDeudas(nvoArrayDeuda)
         // limpiar form
         e.target.formMonto.value = "";
     }
@@ -69,4 +74,4 @@ const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto,montoId, op
     );
 };
 
-export default AgregarMonto;
+export default AgregarMontoDeuda;
