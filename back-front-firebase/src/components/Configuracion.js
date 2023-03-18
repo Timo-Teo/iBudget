@@ -21,18 +21,9 @@ const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
         const docuRef = doc(firestore, `usuarios/${idDocumento}`);
         // buscar documento
         const consulta = await getDoc(docuRef);
-        // revisar si existe
-        if (consulta.exists()) {
-            // si sí existe
-            const infoDocu = consulta.data();
-            return [infoDocu.categorias, infoDocu.ingresos, infoDocu.egresos];
-        } else {
-            // si no existe
-            await setDoc(docuRef, { categorias: [...fakeData], ingresos:[...fakeData], egresos:[...fakeData] });
-            const consulta = await getDoc(docuRef);
-            const infoDocu = consulta.data();
-            return [infoDocu.categorias, infoDocu.ingresos, infoDocu.egresos];
-        }
+        // si sí existe
+        const infoDocu = consulta.data();
+        return [infoDocu.categorias, infoDocu.ingresos, infoDocu.egresos];
     }
 
     useEffect(() => {

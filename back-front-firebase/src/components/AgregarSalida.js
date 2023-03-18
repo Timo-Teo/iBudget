@@ -13,6 +13,7 @@ const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySali
     fecha = fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear()
     async function añadirSalida(e) {
         e.preventDefault();
+        console.log("salida",arraySalida)
         const categoria = e.target.categoria.value;
         const monto = e.target.formMonto.value;
         // crear nuevo array de tareas

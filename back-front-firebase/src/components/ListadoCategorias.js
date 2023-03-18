@@ -31,7 +31,7 @@ const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategorias 
                                             variant="danger"
                                             onClick={() => eliminarTarea(objetoTarea.id)}
                                         >
-                                            Eliminar Tarea
+                                            Eliminar Categorias
                                         </Button>
                                     </Col>
                                 </Row>
