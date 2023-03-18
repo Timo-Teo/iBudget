@@ -8,10 +8,10 @@ import { Container, Button } from "react-bootstrap";
 
 import ListadoCategorias from "./ListadoCategorias";
 import AgregarCategoria from "./AgregarCategoria";
+import ListadoFlujos from "./ListadoFlujos";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
-const Configuracion = ({ correoUsuario }) => {
-
+const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
     const [arrayCategorias, setArrayCategorias] = useState(null);
     const fakeData = [
     ];
@@ -25,28 +25,29 @@ const Configuracion = ({ correoUsuario }) => {
         if (consulta.exists()) {
             // si sí existe
             const infoDocu = consulta.data();
-            return infoDocu.categorias;
+            return [infoDocu.categorias, infoDocu.ingresos, infoDocu.egresos];
         } else {
             // si no existe
-            await setDoc(docuRef, { categorias: [...fakeData] });
+            await setDoc(docuRef, { categorias: [...fakeData], ingresos:[...fakeData], egresos:[...fakeData] });
             const consulta = await getDoc(docuRef);
             const infoDocu = consulta.data();
-            return infoDocu.categorias;
+            return [infoDocu.categorias, infoDocu.ingresos, infoDocu.egresos];
         }
     }
 
     useEffect(() => {
         async function fetchTareas() {
-            const tareasFetchadas = await buscarCategoriaDocumentOrCrearDocumento(
+            const [categoriasFetchada, ingresosFetchada, egresosFetchada] = await buscarCategoriaDocumentOrCrearDocumento(
                 correoUsuario
             );
-            setArrayCategorias(tareasFetchadas);
+            setArrayCategorias(categoriasFetchada);
         }
 
         fetchTareas();
     }, []);
     return(
         <Container>
+            <h1>Mis categorías</h1>
             {arrayCategorias ? (
                 <ListadoCategorias
                     arrayCategorias={arrayCategorias}
@@ -61,6 +62,11 @@ const Configuracion = ({ correoUsuario }) => {
                 correoUsuario={correoUsuario}
                 open={agregarCategoria}
                 onClose={() => setAgregarCategoria(false)} />
+
+            <ListadoFlujos
+                arrayIngresos={arrayIngreso}
+                arrayEgresos={arraySalida}
+            />
 
         </Container>
     )

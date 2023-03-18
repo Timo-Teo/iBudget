@@ -9,6 +9,8 @@ const storage = getStorage(firebaseApp);
 
 const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySalida, open, onClose }) => {
     const [categoria, setCategoria] = useState("")
+    var fecha = new Date()
+    fecha = fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear()
     async function añadirSalida(e) {
         e.preventDefault();
         const categoria = e.target.categoria.value;
@@ -20,6 +22,7 @@ const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySali
                 id: +new Date(),
                 categoria: categoria,
                 monto: monto,
+                fecha: fecha,
             },
         ];
         // actualizar base de datos

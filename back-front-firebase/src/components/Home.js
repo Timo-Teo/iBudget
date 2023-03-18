@@ -12,16 +12,18 @@ const firestore = getFirestore(firebaseApp);
 const Home = ({ correoUsuario }) => {
   const [arrayCategorias, setArrayCategorias] = useState(null);
   const [arrayIngresos, setArrayIngresos] = useState(null);
-  const [arraySalida, setArraySalida] = useState(null);
+  var [arraySalida, setArraySalida] = useState(null);
   const [agregarIngreso, setAgregarIngreso] = useState(false);
   const [agregarSalida, setAgregarSalida] = useState(false);
   var [saldoIngresos,setIngresos] = useState(0.0);
   var [saldoEgresos,setEgresos] = useState(0.0);
   const [saldoTotal, setSaldoTotal] = useState(0.0)
+  const [configuracion, setConfiguracion] = useState(false);
+  const [miBilletera, setMiBilletera] = useState(true);
   const fakeData = [
   ];
 
-    const [configuracion, setConfiguracion] = useState(false);
+
     async function buscarCategoriaDocumentOrCrearDocumento(idDocumento) {
         //crear referencia al documento
         const docuRef = doc(firestore, `usuarios/${idDocumento}`);
@@ -60,7 +62,9 @@ const Home = ({ correoUsuario }) => {
         ))
         setEgresos(saldoEgresos)
         setSaldoTotal(saldoIngresos+saldoEgresos)
-
+        console.log("c", arrayCategorias)
+        console.log("i",arrayIngresos)
+        console.log("arraySalida",arraySalida)
     }
 
     fetchTareas();
@@ -70,35 +74,46 @@ const Home = ({ correoUsuario }) => {
     <Container>
 
       <h4>hola, sesión iniciada</h4>
-      <Button onClick={()=>setConfiguracion(true)}>Configuración</Button>
+      <Button onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>Configuración</Button>
+        <Button onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>Mi billetera</Button>
         <Button onClick={() => signOut(auth)}>Cerrar sesión</Button>
+
       <hr />
         {configuracion?(
-            <Configuracion correoUsuario={correoUsuario}/>
+            <Configuracion
+                correoUsuario={correoUsuario}
+                arrayIngreso={arrayIngresos}
+                arraySalida={arraySalida}
+            />
         ):(
-            <div>
-                <h1>{saldoTotal}</h1>
+            <>
+                {miBilletera?(
+                    <div>
+                        <h1>{saldoTotal}</h1>
 
-                <h1>Ingresos: {saldoIngresos}</h1>
-                <h1>Egresos: {saldoEgresos}</h1>
-                <Button onClick={()=>setAgregarIngreso(true)}>Ingreso de dinero</Button>
-                <Button onClick={()=>setAgregarSalida(true)}>Salida de dinero</Button>
-                <AgregarIngreso
-                    arrayCategoria={arrayCategorias}
-                    arrayIngreso={arrayIngresos}
-                    setArrayIngresos={setArrayIngresos}
-                    correoUsuario={correoUsuario}
-                    open={agregarIngreso}
-                    onClose={() => setAgregarIngreso(false)} />
-                <AgregarSalida
-                    arrayCategoria = {arrayCategorias}
-                    arraySalida={arraySalida}
-                    setArraySalida={setArraySalida}
-                    correoUsuario={correoUsuario}
-                    open={agregarSalida}
-                    onClose={() => setAgregarSalida(false)} />
-            </div>
-
+                        <h1>Ingresos: {saldoIngresos}</h1>
+                        <h1>Egresos: {saldoEgresos}</h1>
+                        <Button onClick={()=>setAgregarIngreso(true)}>Ingreso de dinero</Button>
+                        <Button onClick={()=>setAgregarSalida(true)}>Salida de dinero</Button>
+                        <AgregarIngreso
+                            arrayCategoria={arrayCategorias}
+                            arrayIngreso={arrayIngresos}
+                            setArrayIngresos={setArrayIngresos}
+                            correoUsuario={correoUsuario}
+                            open={agregarIngreso}
+                            onClose={() => setAgregarIngreso(false)} />
+                        <AgregarSalida
+                            arrayCategoria = {arrayCategorias}
+                            arraySalida={arraySalida}
+                            setArraySalida={setArraySalida}
+                            correoUsuario={correoUsuario}
+                            open={agregarSalida}
+                            onClose={() => setAgregarSalida(false)} />
+                    </div>
+                ):(
+                    <></>
+                )}
+            </>
         )}
 
     </Container>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
-
 import firebaseApp from "../credenciales";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
@@ -20,7 +19,7 @@ const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategorias 
     return (
         <Container>
             <Stack>
-                <h1>Ingresos</h1>
+                <h1>Mis categorías de ingresos</h1>
                 {arrayCategorias.map((objetoTarea) => {
                     if(objetoTarea.tipoCategoria == "Ingreso"){
                         return (
@@ -41,7 +40,7 @@ const ListadoCategorias = ({ arrayCategorias, correoUsuario, setArrayCategorias 
                         );
                     }
                 })}
-                <h1>Egresos</h1>
+                <h1>Mis categorías de egresos</h1>
                 {arrayCategorias.map((objetoTarea) => {
                     if(objetoTarea.tipoCategoria == "Egreso"){
                         return (
