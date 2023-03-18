@@ -118,12 +118,14 @@ const Home = ({ correoUsuario }) => {
                             open={agregarSalida}
                             onClose={() => setAgregarSalida(false)} />
                         <Row>
-                            <h1>Regla 50/30/20</h1>
-                            <Row>
-                                <Col><h2>Necesidades básicas:{saldoTotal*0.5}</h2></Col>
-                                <Col><h2>Para gastos prescindibles:{saldoTotal*0.3}</h2></Col>
-                                <Col><h2>Para el ahorro o deuda:{saldoTotal*0.2}</h2></Col>
-                            </Row>
+                            <div>
+                                <h1>Regla 50/30/20</h1>
+                                <Row>
+                                    <Col><h2>Necesidades básicas:{saldoTotal*0.5}</h2></Col>
+                                    <Col><h2>Para gastos prescindibles:{saldoTotal*0.3}</h2></Col>
+                                    <Col><h2>Para el ahorro o deuda:{saldoTotal*0.2}</h2></Col>
+                                </Row>
+                            </div>
                         </Row>
                         <Row>
                             <Row>

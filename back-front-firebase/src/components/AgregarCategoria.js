@@ -13,7 +13,7 @@ const ArgegarCategoria = ({ correoUsuario, setArrayCategorias, arrayCategorias, 
         const descripcion = e.target.formDescripcion.value;
         const tipoCategoria = e.target.formCategoria.value;
         // crear nuevo array de tareas
-        const nvoArrayTareas = [
+        const nvoArrayCategoria = [
             ...arrayCategorias,
             {
                 id: +new Date(),
@@ -23,9 +23,9 @@ const ArgegarCategoria = ({ correoUsuario, setArrayCategorias, arrayCategorias, 
         ];
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
-        updateDoc(docuRef, { categorias: [...nvoArrayTareas] });
+        updateDoc(docuRef, { categorias: [...nvoArrayCategoria] });
         //actualizar estado
-        setArrayCategorias(nvoArrayTareas);
+        setArrayCategorias(nvoArrayCategoria);
         // limpiar form
         e.target.formDescripcion.value = "";
         e.target.formCategoria.value = "";
