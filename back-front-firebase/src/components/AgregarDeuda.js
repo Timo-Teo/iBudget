@@ -4,7 +4,7 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import firebaseApp from "../credenciales";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
-const ArgegarDeuda = ({correoUsuario, setArrayDeudas, arrayDeudas, open, onClose }) => {
+const ArgegarDeuda = ({correoUsuario, setArrayDeudas,  arrayDeudas, open, onClose }) => {
     const [date, setDate] = useState(null);
     const dateInputRef = useRef(null);
     async function añadirDeuda(e) {
@@ -13,7 +13,6 @@ const ArgegarDeuda = ({correoUsuario, setArrayDeudas, arrayDeudas, open, onClose
         const descripcion = e.target.formDescripcion.value;
         const monto = e.target.formMonto.value;
         const fecha = e.target.formFecha.value;
-        console.log("fecha")
         const acreedor = e.target.formAcreedor.value;
         const email = e.target.formCorreo.value;
         // crear nuevo array de tareas

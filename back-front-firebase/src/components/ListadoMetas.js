@@ -1,25 +1,29 @@
 import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
 import AgregarMonto from "./AgregarMonto";
-
+import "../styles/styles.css"
 const ListadoMetas = ({ meta,correoUsuario,arrayMeta,setArrayMeta, }) => {
     const [agregarMonto, setAgregarMonto]=useState(false)
     return (
         <Container>
             <Stack>
                 <div>
-                    <Row>{meta.descripcion}</Row>
+                    <div>
+                        <Row>{meta.descripcion}</Row>
+                    </div>
+                    <hr />
                     <Row >
-                        <Col>{meta.monto}</Col>
+                        <div><p className="center">Meta a ahorrar</p></div>
+                        <h2 className="center">$ {meta.monto}</h2>
                     </Row>
                     <Row>
-                        <Col>Conseguido: {meta.montoPagado}</Col>
-                        <Col>Por pagar: {meta.montoPorPagar}</Col>
+                        <Col className="center verde"><h4 className="subtitulo">Conseguido: {meta.montoPagado}</h4></Col>
+                        <Col className="center rojo"><h4 className="subtitulo">Por pagar: {meta.montoPorPagar}</h4></Col>
                     </Row>
                     <Row>
-                        <Button onClick={()=>setAgregarMonto(true)}>Agregar monto</Button>
+                        <button className="boton bg-white text-black" onClick={()=>setAgregarMonto(true)}>Agregar monto</button>
                     </Row>
-                <hr />
+
                 </div>
                 <AgregarMonto
                     meta={meta}

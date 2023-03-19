@@ -4,11 +4,13 @@ import { Container, Form, Col, Row, Button } from "react-bootstrap";
 import firebaseApp from "../credenciales";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Home from "./Home";
 const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 
-const ArgegarIngreso = ({ arrayCategoria, correoUsuario, setArrayIngresos, arrayIngreso, open, onClose }) => {
+const ArgegarIngreso = ({ arrayCategoria, correoUsuario, setIngreso,saldoTotal, setSaldoTotal,setArrayIngresos, arrayIngreso, open, onClose }) => {
     const [categoria, setCategoria] = useState("")
+    var [saldoIngresos,setSaldoIngreso] = useState(0.0);
     var fecha = new Date()
     fecha = fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear()
 
@@ -17,7 +19,7 @@ const ArgegarIngreso = ({ arrayCategoria, correoUsuario, setArrayIngresos, array
         const categoria = e.target.categoria.value;
         const monto = e.target.formMonto.value;
         // crear nuevo array de tareas
-        const nvoArrayTareas = [
+        const nvoArrayIngreso = [
             ...arrayIngreso,
             {
                 id: +new Date(),
@@ -29,12 +31,20 @@ const ArgegarIngreso = ({ arrayCategoria, correoUsuario, setArrayIngresos, array
         ];
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
-        updateDoc(docuRef, { ingresos: [...nvoArrayTareas] });
+        updateDoc(docuRef, { ingresos: [...nvoArrayIngreso] });
         //actualizar estado
-        setArrayIngresos(nvoArrayTareas);
+        setArrayIngresos(nvoArrayIngreso);
+        //actualizar ingresos
+        nvoArrayIngreso.map(ingreso=>(
+            saldoIngresos += parseFloat(ingreso.monto)
+        ))
+        setIngreso(parseFloat(saldoIngresos))
+        //actualizar saldo total
+        setSaldoTotal(parseFloat(saldoTotal)+parseFloat(monto))
         // limpiar form
         e.target.categoria.value = "";
         e.target.formMonto.value = "";
+
     }
     if (!open) return null;
     return (

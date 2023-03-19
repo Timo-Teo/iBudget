@@ -1,0 +1,51 @@
+.menu{
+    display: block;
+    float: right;
+    margin:0px 20px;
+}
+.center{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.boton{
+    background-color: #E5EEF6;
+    border: none;
+    color:#2B478B;
+    font-weight: bold;
+}
+.cajaSombra{
+    display: block;
+    box-shadow: 5px 5px 30px gray;
+    margin: 30px 0px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+.verde{
+    color: #63D1C4;
+    font-weight: bold;
+}
+.rojo{
+    color: #FF6E6E;
+    font-weight: bold;
+}
+h2{
+    color: #3D3D3D;
+    font-weight: bold;
+}
+.contenedorOpciones{
+    border-radius: 20px;
+    background-color: #E5EEF6;
+    margin: 30px 0px;
+    padding: 30px 100px;
+}
+.circle{
+    display: inline-block;
+    background-color: #E5EEF6;
+}
+.subtitulo{
+    font-size: 15px;
+}
+.textBold{
+    font-weight: bold;
+}

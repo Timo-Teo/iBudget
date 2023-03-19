@@ -7,8 +7,9 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 const firestore = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 
-const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySalida, open, onClose }) => {
+const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, setEgreso,saldoTotal, setSaldoTotal,arraySalida, open, onClose }) => {
     const [categoria, setCategoria] = useState("")
+    var [saldoEgresos,setSaldoEgresos] = useState(0.0);
     var fecha = new Date()
     fecha = fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear()
     async function añadirSalida(e) {
@@ -17,7 +18,7 @@ const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySali
         const categoria = e.target.categoria.value;
         const monto = e.target.formMonto.value;
         // crear nuevo array de tareas
-        const nvoArrayTareas = [
+        const nvoArraySalida = [
             ...arraySalida,
             {
                 id: +new Date(),
@@ -28,9 +29,16 @@ const ArgegarSalida = ({arrayCategoria ,correoUsuario, setArraySalida, arraySali
         ];
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
-        updateDoc(docuRef, { egresos: [...nvoArrayTareas] });
+        updateDoc(docuRef, { egresos: [...nvoArraySalida] });
         //actualizar estado
-        setArraySalida(nvoArrayTareas);
+        setArraySalida(nvoArraySalida);
+        //actualizar ingresos
+        nvoArraySalida.map(egreso=>(
+            saldoEgresos += parseFloat(egreso.monto)
+        ))
+        setEgreso(saldoEgresos)
+        //actualizar saldo total
+        setSaldoTotal(parseFloat(saldoTotal)-parseFloat(monto))
         // limpiar form
         e.target.categoria.value = "";
         e.target.formMonto.value = "";

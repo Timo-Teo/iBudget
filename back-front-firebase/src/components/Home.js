@@ -10,6 +10,10 @@ import AgregarMeta from "./AgregarMeta";
 import ListadoMetas from "./ListadoMetas";
 import ListadoDeudas from "./ListadoDeudas";
 import AgregarDeuda from "./AgregarDeuda";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGear, faWallet, faUser, faCalendarCheck, faClockRotateLeft, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
+import "../styles/styles.css"
+
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -18,7 +22,7 @@ const Home = ({ correoUsuario }) => {
   const [arrayIngresos, setArrayIngresos] = useState([]);
   const [arraySalida, setArraySalida] = useState([]);
   const [arrayMetas, setArrayMetas] = useState([]);
-  const [arrayDeudas, setArrayDeudas] = useState(null);
+  const [arrayDeudas, setArrayDeudas] = useState([]);
   const [agregarIngreso, setAgregarIngreso] = useState(false);
   const [agregarSalida, setAgregarSalida] = useState(false);
   var [saldoIngresos,setIngresos] = useState(0.0);
@@ -79,14 +83,29 @@ const Home = ({ correoUsuario }) => {
   }, []);
 
   return (
-    <Container>
+    <>
+        <Row>
+            <div className="rounded p-4">
+                <Col></Col>
+                <Col className=" ">
+                    <div className="menu">
+                        <div className="center"><FontAwesomeIcon icon={faUser} color="#2B478B" /></div>
+                        <div><button className="boton bg-white" onClick={() => signOut(auth)}>Cerrar sesión</button></div>
+                    </div>
 
-      <h4>hola, sesión iniciada</h4>
-      <Button onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>Configuración</Button>
-        <Button onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>Mi billetera</Button>
-        <Button onClick={() => signOut(auth)}>Cerrar sesión</Button>
+                    <div className="menu">
+                        <div className="center"><FontAwesomeIcon icon={faWallet} color="#2B478B" /></div>
+                        <div><button className="boton bg-white" onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>Mi billetera</button></div>
+                    </div>
+                    <div className="menu">
+                        <div className="center"><FontAwesomeIcon icon={faGear} color="#2B478B" /></div>
+                        <div><button className="boton bg-white" onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>Configuración</button></div>
+                    </div>
 
-      <hr />
+                </Col>
+
+            </div>
+        </Row>
         {configuracion?(
             <Configuracion
                 correoUsuario={correoUsuario}
@@ -96,111 +115,165 @@ const Home = ({ correoUsuario }) => {
         ):(
             <>
                 {miBilletera?(
-                    <div>
-                        <h1>{saldoTotal}</h1>
-
-                        <h1>Ingresos: {saldoIngresos}</h1>
-                        <h1>Egresos: {saldoEgresos}</h1>
-                        <Button onClick={()=>setAgregarIngreso(true)}>Ingreso de dinero</Button>
-                        <Button onClick={()=>setAgregarSalida(true)}>Salida de dinero</Button>
-                        <AgregarIngreso
-                            arrayCategoria={arrayCategorias}
-                            arrayIngreso={arrayIngresos}
-                            setArrayIngresos={setArrayIngresos}
-                            correoUsuario={correoUsuario}
-                            open={agregarIngreso}
-                            onClose={() => setAgregarIngreso(false)} />
-                        <AgregarSalida
-                            arrayCategoria = {arrayCategorias}
-                            arraySalida={arraySalida}
-                            setArraySalida={setArraySalida}
-                            correoUsuario={correoUsuario}
-                            open={agregarSalida}
-                            onClose={() => setAgregarSalida(false)} />
-                        <Row>
-                            <div>
-                                <h1>Regla 50/30/20</h1>
-                                <Row>
-                                    <Col><h2>Necesidades básicas:{saldoTotal*0.5}</h2></Col>
-                                    <Col><h2>Para gastos prescindibles:{saldoTotal*0.3}</h2></Col>
-                                    <Col><h2>Para el ahorro o deuda:{saldoTotal*0.2}</h2></Col>
+                    <>
+                        <div className="contenedorOpciones">
+                            <h2 className="">Mi billetera</h2>
+                            <div className="cajaSombra">
+                                <Row className="p-3">
+                                    <Col className="center"><FontAwesomeIcon icon={faCalendarCheck}/> Marzo 2022</Col>
+                                    <Col className="center">Tu saldo actual</Col>
+                                    <Col className="center"><FontAwesomeIcon icon={faClockRotateLeft}/></Col>
+                                </Row>
+                                <Row className="p-2">
+                                    <h1 className="center">$  {saldoTotal}</h1>
+                                </Row>
+                                <Row className="p-4">
+                                    <Col className="center verde">Ingresos: +{saldoIngresos}</Col>
+                                    <Col className="center rojo">Egresos: {saldoEgresos}</Col>
                                 </Row>
                             </div>
-                        </Row>
-                        <Row>
-                            <Row>
-                                <Col><h1>Tus metas de ahorro</h1></Col>
-                                <Col>
-                                    <Button onClick={()=>setAgregarMeta(true)}>Agregar</Button>
-                                </Col>
-                            </Row>
-                            <Row>
-                                {arrayMetas?(
-                                    <div>
-                                        {arrayMetas.map((objetoMeta) => {
-                                            return(
-                                                <ListadoMetas
-                                                    key={objetoMeta.id}
-                                                    meta={objetoMeta}
-                                                    correoUsuario = {correoUsuario}
-                                                    arrayMeta={arrayMetas}
-                                                    setArrayMeta={setArrayMetas}
-                                                />
-                                            );
-                                        })}
-                                    </div>
-                                ):(<p>No existen metas</p>)}
-                            </Row>
-                            <AgregarMeta
-                                arrayMeta={arrayMetas}
-                                setArrayMeta={setArrayMetas}
+                            <Button onClick={()=>setAgregarIngreso(true)}>Ingreso de dinero</Button>
+                            <Button onClick={()=>setAgregarSalida(true)}>Salida de dinero</Button>
+                            <AgregarIngreso
+                                arrayCategoria={arrayCategorias}
+                                arrayIngreso={arrayIngresos}
+                                setArrayIngresos={setArrayIngresos}
+                                saldoTotal={saldoTotal}
+                                setSaldoTotal={setSaldoTotal}
                                 correoUsuario={correoUsuario}
-                                open={agregarMeta}
-                                onClose={() => setAgregarMeta(false)}
-                            />
-                        </Row>
-                        <Row>
-                            <Row>
-                                <Col><h1>Deudas por pagar</h1></Col>
-                                <Col>
-                                    <Button onClick={()=>setAgregarDeuda(true)}>Agregar</Button>
-                                </Col>
-                            </Row>
-                            <Row>
-                                {arrayDeudas?(
-                                    <div>
-                                        {arrayDeudas.map((objetoDeuda) => {
-                                            return(
-                                                <ListadoDeudas
-                                                    key={objetoDeuda.id}
-                                                    deuda={objetoDeuda}
-                                                    correoUsuario = {correoUsuario}
-                                                    arrayDeudas={arrayDeudas}
-                                                    setArrayDeudas={setArrayDeudas}
-                                                />
-                                            );
-                                        })}
-                                    </div>
-                                ):(<p>No existen deudas</p>)}
-                            </Row>
-                            <AgregarDeuda
-                                arrayDeudas={arrayDeudas}
-                                setArrayDeudas={setArrayDeudas}
+                                setIngreso={setIngresos}
+                                open={agregarIngreso}
+                                onClose={() => setAgregarIngreso(false)} />
+                            <AgregarSalida
+                                arrayCategoria = {arrayCategorias}
+                                arraySalida={arraySalida}
+                                setArraySalida={setArraySalida}
+                                saldoTotal={saldoTotal}
+                                setSaldoTotal={setSaldoTotal}
+                                setEgreso={setEgresos}
                                 correoUsuario={correoUsuario}
-                                open={agregarDeuda}
-                                onClose={() => setAgregarDeuda(false)}
-                            />
-                        </Row>
+                                open={agregarSalida}
+                                onClose={() => setAgregarSalida(false)} />
+                        </div>
+                        <div className="contenedorOpciones">
+                            <Row>
+                                <div>
+                                    <h2>Regla 50/30/20</h2>
+                                    <p>La regla 50 30 20 simplifica la administración financiera dividiendo tus ingresos netos en tres categorías de gasto: necesidades básicas, gastos prescindibles y ahorro o deuda.</p>
+                                    <Row className="center">
+                                        <Col className="cajaSombra me-5 ms-2 p-0">
+                                            <div className="center mt-3 mb-3">
+                                                <div className="circle rounded-circle">50%</div>
+                                                <div className="d-inline-block "><p className="center mb-0 ms-3">Necesidades básicas</p></div>
+                                            </div>
+                                            <h2 className="center mt-5 mb-5">$ {saldoTotal*0.5}</h2>
+                                        </Col>
+                                        <Col className="cajaSombra me-5 p-0">
+                                            <div className="center mt-3 mb-3">
+                                                <div className="circle rounded-circle">30%</div>
+                                                <div className="d-inline-block "><p className="center mb-0 ms-3">Para gastos prescindibles</p></div>
+                                            </div>
+                                            <h2 className="center mt-5 mb-5">$ {saldoTotal*0.3}</h2>
+                                        </Col>
+                                        <Col className="cajaSombra me-3 p-0">
+                                            <div className="center mt-3 mb-3">
+                                                <div className="circle rounded-circle">20%</div>
+                                                <div className="d-inline-block "><p className="center mb-0 ms-3">Para el ahorro o deuda</p></div>
+                                            </div>
+                                            <h2 className="center mt-5 mb-5">$ {saldoTotal*0.2}</h2>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Row>
+                        </div>
+                        <div className="contenedorOpciones">
+                            <Row>
+                                <Row>
+                                    <Col><h2>Tus metas de ahorro</h2></Col>
+                                    <Col>
+                                        <div className="menu">
+                                            <button className="boton" onClick={()=>setAgregarMeta(true)}>Agregar <FontAwesomeIcon icon={faCirclePlus}/></button>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    {arrayMetas?(
+                                        <div>
+                                            {arrayMetas.map((objetoMeta) => {
+                                                return(
+                                                    <div className="cajaSombra me-5 ms-2 float-start">
+                                                        <ListadoMetas
+                                                            key={objetoMeta.id}
+                                                            meta={objetoMeta}
+                                                            correoUsuario = {correoUsuario}
+                                                            arrayMeta={arrayMetas}
+                                                            setArrayMeta={setArrayMetas}
+                                                        />
+                                                    </div>
 
+                                                );
+                                            })}
+                                        </div>
+                                    ):(<p>No existen metas</p>)}
+                                </Row>
+                                <AgregarMeta
+                                    arrayMeta={arrayMetas}
+                                    setArrayMeta={setArrayMetas}
+                                    correoUsuario={correoUsuario}
+                                    open={agregarMeta}
+                                    onClose={() => setAgregarMeta(false)}
+                                />
+                            </Row>
+                        </div>
+                        <div className="contenedorOpciones">
+                            <Row>
 
-                    </div>
+                                <Row>
+                                    <Col><h2>Deudas por pagar</h2></Col>
+                                    <Col>
+                                        <div className="menu">
+                                            <button className="boton" onClick={()=>setAgregarDeuda(true)}>Agregar <FontAwesomeIcon icon={faCirclePlus}/></button>
+                                        </div>
+
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    {arrayDeudas?(
+                                        <div>
+                                            {arrayDeudas.map((objetoDeuda) => {
+                                                return(
+                                                    <div className="cajaSombra me-5 ms-2 center float-start">
+                                                        <ListadoDeudas
+                                                            key={objetoDeuda.id}
+                                                            deuda={objetoDeuda}
+                                                            correoUsuario = {correoUsuario}
+                                                            arrayDeudas={arrayDeudas}
+                                                            setArrayDeudas={setArrayDeudas}
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    ):(<p>No existen deudas</p>)}
+                                </Row>
+                                <AgregarDeuda
+                                    arrayDeudas={arrayDeudas}
+                                    setArrayDeudas={setArrayDeudas}
+                                    correoUsuario={correoUsuario}
+                                    open={agregarDeuda}
+                                    onClose={() => setAgregarDeuda(false)}
+                                />
+                            </Row>
+                        </div>
+
+                    </>
                 ):(
                     <></>
                 )}
             </>
         )}
 
-    </Container>
+    </>
   );
 };
 

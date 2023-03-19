@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
 import AgregarMontoDeuda from "./AgregarMontoDeuda";
+import {faCalendarCheck, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
     const [agregarDeuda, setAgregarDeuda]=useState(false)
@@ -8,22 +10,29 @@ const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
         <Container>
             <Stack>
                 <div>
-                    <Row>{deuda.razon}</Row>
-                    <Row>{deuda.descripcion}</Row>
-                    <Row >
-                        <Col>{deuda.monto}</Col>
-                    </Row>
-                    <Row>
-                        <Col>Conseguido: {deuda.montoPagado}</Col>
-                        <Col>Por pagar: {deuda.montoPorPagar}</Col>
-                    </Row>
-                    <Row>
-                        <Button onClick={()=>setAgregarDeuda(true)}>Agregar monto</Button>
-                    </Row>
-                    <Row>Fecha límite: {deuda.fecha}</Row>
-                    <Row>Acreedor: {deuda.acreedor}</Row>
-                    <Row>{deuda.email}</Row>
+                    <div>
+                        <Row className="textBold">{deuda.razon}</Row>
+                        <Row>
+                            <div className="d-inline-block "><p className="float-start textBold mb-0">Categoria:</p><p className="mb-0">{deuda.descripcion}</p></div>
+                        </Row>
+                    </div>
                     <hr />
+                    <Row >
+                        <div><p className="center">Monto a pagar</p></div>
+                        <h2 className="center">${deuda.monto}</h2>
+                    </Row>
+                    <Row>
+                        <Col className="center verde"><h4 className="subtitulo">Conseguido:{deuda.montoPagado}</h4></Col>
+                        <Col className="center rojo"><h4 className="subtitulo">Por pagar: {deuda.montoPorPagar}</h4></Col>
+                    </Row>
+                    <Row>
+                        <button className="boton bg-white text-black" onClick={()=>setAgregarDeuda(true)}>Agregar monto</button>
+                    </Row>
+                    <Row><Col className="center"><FontAwesomeIcon icon={faCalendarCheck}/>Fecha límite: {deuda.fecha}</Col></Row>
+                    <Row className="mt-5 mb-4">
+                        <Row><Col><p className="textBold float-start">Acreedor:</p> {deuda.acreedor}</Col></Row>
+                        <Row><Col><FontAwesomeIcon icon={faEnvelope}/>{deuda.email}</Col></Row>
+                    </Row>
                 </div>
                 <AgregarMontoDeuda
                     deuda={deuda}

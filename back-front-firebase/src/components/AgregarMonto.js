@@ -4,7 +4,7 @@ import { Form, Col, Row, Button } from "react-bootstrap";
 import firebaseApp from "../credenciales";
 import {getFirestore, updateDoc, doc, getDoc} from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
-const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto,montoId, open, onClose }) => {
+const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto, open, onClose }) => {
 
     var [arrayMetas, setArrayMetas] = useState([])
     async function eliminarMeta(idMetaAEliminar) {
@@ -15,6 +15,7 @@ const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto,montoId, op
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
         updateDoc(docuRef, { metas: [...nvoArrayMeta] });
+
         //actualizar state
         arrayMetas = nvoArrayMeta;
     }
@@ -38,6 +39,7 @@ const AgregarMonto = ({correoUsuario, setArrayMonto, meta,arrayMonto,montoId, op
         // actualizar base de datos
         const docuRef = doc(firestore, `usuarios/${correoUsuario}`);
         updateDoc(docuRef, { metas: [...nvoArrayMeta] });
+        setArrayMonto(nvoArrayMeta)
         // limpiar form
         e.target.formMonto.value = "";
     }

@@ -5,7 +5,6 @@ import firebaseApp from "../credenciales";
 import {getFirestore, updateDoc, doc, getDoc} from "firebase/firestore";
 const firestore = getFirestore(firebaseApp);
 const AgregarMontoDeuda = ({correoUsuario, setArrayDeudas, deuda,arrayDeudas, open, onClose }) => {
-
     var [arrayDeuda, setArrayDeuda] = useState([])
     async function eliminarDeuda(idDeudaAEliminar) {
         // crear nuevo array de tareas
