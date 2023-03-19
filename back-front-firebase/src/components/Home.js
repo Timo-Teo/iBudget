@@ -85,14 +85,13 @@ const Home = ({ correoUsuario }) => {
   return (
     <>
         <Row>
-            <div className="rounded p-4">
-                <Col></Col>
-                <Col className=" ">
+            <div className="contenedorMenu">
+                <div></div>
+                <Col className="menu bg-white rounded pt-3 pb-3">
                     <div className="menu">
                         <div className="center"><FontAwesomeIcon icon={faUser} color="#2B478B" /></div>
                         <div><button className="boton bg-white" onClick={() => signOut(auth)}>Cerrar sesión</button></div>
                     </div>
-
                     <div className="menu">
                         <div className="center"><FontAwesomeIcon icon={faWallet} color="#2B478B" /></div>
                         <div><button className="boton bg-white" onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>Mi billetera</button></div>
@@ -101,9 +100,7 @@ const Home = ({ correoUsuario }) => {
                         <div className="center"><FontAwesomeIcon icon={faGear} color="#2B478B" /></div>
                         <div><button className="boton bg-white" onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>Configuración</button></div>
                     </div>
-
                 </Col>
-
             </div>
         </Row>
         {configuracion?(
@@ -117,7 +114,7 @@ const Home = ({ correoUsuario }) => {
                 {miBilletera?(
                     <>
                         <div className="contenedorOpciones">
-                            <h2 className="">Mi billetera</h2>
+                            <h2>Mi billetera</h2>
                             <div className="cajaSombra">
                                 <Row className="p-3">
                                     <Col className="center"><FontAwesomeIcon icon={faCalendarCheck}/> Marzo 2022</Col>

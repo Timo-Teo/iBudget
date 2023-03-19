@@ -4,11 +4,13 @@ import firebaseApp from "../credenciales";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-import { Container, Button } from "react-bootstrap";
+import {Container, Button, Col} from "react-bootstrap";
 
 import ListadoCategorias from "./ListadoCategorias";
 import AgregarCategoria from "./AgregarCategoria";
 import ListadoFlujos from "./ListadoFlujos";
+import {faGear} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
@@ -36,8 +38,10 @@ const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
         fetchTareas();
     }, []);
     return(
-        <Container>
-            <h1>Mis categorías</h1>
+        <div className="contenedorOpciones bg-white">
+            <h2><FontAwesomeIcon icon={faGear}/> Configuración</h2>
+            <hr/>
+            <h3>Mis categorías</h3>
             {arrayCategorias ? (
                 <ListadoCategorias
                     arrayCategorias={arrayCategorias}
@@ -45,20 +49,20 @@ const Configuracion = ({ correoUsuario, arrayIngreso, arraySalida }) => {
                     correoUsuario={correoUsuario}
                 />
             ) : null}
-            <Button onClick={()=>setAgregarCategoria(true)}>Agregar</Button>
+            <button className="boton bg-white" onClick={()=>setAgregarCategoria(true)}>Agregar</button>
             <AgregarCategoria
                 arrayCategorias={arrayCategorias}
                 setArrayCategorias={setArrayCategorias}
                 correoUsuario={correoUsuario}
                 open={agregarCategoria}
                 onClose={() => setAgregarCategoria(false)} />
-
+            <hr/>
             <ListadoFlujos
                 arrayIngresos={arrayIngreso}
                 arrayEgresos={arraySalida}
             />
 
-        </Container>
+        </div>
     )
 }
 export default Configuracion;

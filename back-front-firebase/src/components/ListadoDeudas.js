@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
 import AgregarMontoDeuda from "./AgregarMontoDeuda";
-import {faCalendarCheck, faEnvelope} from "@fortawesome/free-solid-svg-icons"
+import {faCalendarCheck, faEnvelope, faCircleExclamation} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
@@ -11,7 +11,7 @@ const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
             <Stack>
                 <div>
                     <div>
-                        <Row className="textBold">{deuda.razon}</Row>
+                        <Row className="textBold"><Col><FontAwesomeIcon icon={faCircleExclamation}/>{deuda.razon}</Col></Row>
                         <Row>
                             <div className="d-inline-block "><p className="float-start textBold mb-0">Categoria:</p><p className="mb-0">{deuda.descripcion}</p></div>
                         </Row>
