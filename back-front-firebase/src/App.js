@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
-import Logueo from "./components/Logueo";
-
+import Ibudget from "./pages/ibudget";
 import firebaseApp from "./credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth(firebaseApp);
+
 
 function App() {
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);
@@ -24,7 +24,7 @@ function App() {
       {usuarioGlobal ? (
         <Home correoUsuario={usuarioGlobal.email} />
       ) : (
-        <Logueo />
+        <Ibudget/>
       )}
     </>
   );

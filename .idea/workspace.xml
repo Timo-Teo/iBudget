@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1878249b-48a0-43a0-9688-bd4fdeff26f0" name="Changes" comment="" />
+    <list default="true" id="1878249b-48a0-43a0-9688-bd4fdeff26f0" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/icons/i-isotipo-ibudget.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/icons/i-user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-banner.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-card-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-card-2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-logo-ibudget.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/components/layout/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/components/layout/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/ReadexPro-bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/pages/ibudget.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/pages/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/Footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/Header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/ibudget.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarCategoria.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarCategoria.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarIngreso.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarIngreso.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -18,16 +57,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/iBudget&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Projects/iBudget",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Projects\\iBudget\\ibudget-frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\iBudget\back-front-firebase\public\icons" />
+      <recent name="C:\Projects\iBudget\back-front-firebase\public\img" />
+      <recent name="C:\Projects\iBudget\back-front-firebase\src\fonts" />
+      <recent name="C:\Projects\iBudget\back-front-firebase\src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,5 +94,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/front-back-firebase" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>
