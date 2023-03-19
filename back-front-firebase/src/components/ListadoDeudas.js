@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
 import AgregarMontoDeuda from "./AgregarMontoDeuda";
-import {faCalendarCheck, faEnvelope, faCircleExclamation} from "@fortawesome/free-solid-svg-icons"
+import {faCalendarCheck, faEnvelope, faCircleExclamation, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
@@ -26,7 +26,10 @@ const ListadoDeudas = ({ deuda,correoUsuario,arrayDeudas,setArrayDeudas}) => {
                         <Col className="center rojo"><h4 className="subtitulo">Por pagar: {deuda.montoPorPagar}</h4></Col>
                     </Row>
                     <Row>
-                        <button className="boton bg-white text-black" onClick={()=>setAgregarDeuda(true)}>Agregar monto</button>
+                        <div className="center mb-4 mt-4">
+                        <button className="boton bg-white text-black" onClick={()=>setAgregarDeuda(true)}>
+                            <div className="center"><FontAwesomeIcon icon={faCirclePlus} color="#63D1C4" className="tamañoBotonIE"/></div>
+                            Agregar monto</button></div>
                     </Row>
                     <Row><Col className="center"><FontAwesomeIcon icon={faCalendarCheck}/>Fecha límite: {deuda.fecha}</Col></Row>
                     <Row className="mt-5 mb-4">

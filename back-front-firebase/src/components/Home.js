@@ -11,7 +11,7 @@ import ListadoMetas from "./ListadoMetas";
 import ListadoDeudas from "./ListadoDeudas";
 import AgregarDeuda from "./AgregarDeuda";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faGear, faWallet, faUser, faCalendarCheck, faClockRotateLeft, faCirclePlus} from "@fortawesome/free-solid-svg-icons"
+import {faGear, faWallet, faUser, faCalendarCheck, faClockRotateLeft, faCirclePlus,faCircleMinus} from "@fortawesome/free-solid-svg-icons"
 import "../styles/styles.css"
 
 const auth = getAuth(firebaseApp);
@@ -89,16 +89,20 @@ const Home = ({ correoUsuario }) => {
                 <div></div>
                 <Col className="menu bg-white rounded pt-3 pb-3">
                     <div className="menu">
-                        <div className="center"><FontAwesomeIcon icon={faUser} color="#2B478B" /></div>
-                        <div><button className="boton bg-white" onClick={() => signOut(auth)}>Cerrar sesión</button></div>
+
+                        <div><button className="boton bg-white" onClick={() => signOut(auth)}>
+                            <div className="center"><FontAwesomeIcon icon={faUser} color="#2B478B" /></div>
+                            Cerrar sesión</button></div>
                     </div>
                     <div className="menu">
-                        <div className="center"><FontAwesomeIcon icon={faWallet} color="#2B478B" /></div>
-                        <div><button className="boton bg-white" onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>Mi billetera</button></div>
+                        <div><button className="boton bg-white" onClick={()=>(setMiBilletera(true),setConfiguracion(false))}>
+                            <div className="center"><FontAwesomeIcon icon={faWallet} color="#2B478B" /></div>
+                            Mi billetera</button></div>
                     </div>
                     <div className="menu">
-                        <div className="center"><FontAwesomeIcon icon={faGear} color="#2B478B" /></div>
-                        <div><button className="boton bg-white" onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>Configuración</button></div>
+                        <div><button className="boton bg-white" onClick={()=>(setConfiguracion(true),setMiBilletera(false))}>
+                            <div className="center"><FontAwesomeIcon icon={faGear} color="#2B478B" /></div>
+                            Configuración</button></div>
                     </div>
                 </Col>
             </div>
@@ -129,8 +133,25 @@ const Home = ({ correoUsuario }) => {
                                     <Col className="center rojo">Egresos: {saldoEgresos}</Col>
                                 </Row>
                             </div>
-                            <Button onClick={()=>setAgregarIngreso(true)}>Ingreso de dinero</Button>
-                            <Button onClick={()=>setAgregarSalida(true)}>Salida de dinero</Button>
+                            <div>
+                                <Row>
+                                    <Col>
+
+                                        <div className="center"><button className="boton text-black" onClick={()=>setAgregarIngreso(true)}>
+                                            <div className="center"><FontAwesomeIcon icon={faCirclePlus} color="#63D1C4" className="tamañoBotonIE"/></div>
+                                            Ingreso de dinero</button></div>
+
+                                    </Col>
+                                    <Col>
+                                        <div className="center"><button className="boton text-black" onClick={()=>setAgregarSalida(true)}>
+                                            <div className="center"><FontAwesomeIcon icon={faCircleMinus} color="#FF6E6E" className="tamañoBotonIE"/></div>
+                                            Salida de dinero</button></div>
+
+                                    </Col>
+                                </Row>
+                            </div>
+
+
                             <AgregarIngreso
                                 arrayCategoria={arrayCategorias}
                                 arrayIngreso={arrayIngresos}

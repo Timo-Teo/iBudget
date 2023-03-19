@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { Stack, Container, Row, Col, Button } from "react-bootstrap";
 import AgregarMonto from "./AgregarMonto";
 import "../styles/styles.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCirclePlus} from "@fortawesome/free-solid-svg-icons";
 const ListadoMetas = ({ meta,correoUsuario,arrayMeta,setArrayMeta, }) => {
     const [agregarMonto, setAgregarMonto]=useState(false)
     return (
@@ -21,7 +23,9 @@ const ListadoMetas = ({ meta,correoUsuario,arrayMeta,setArrayMeta, }) => {
                         <Col className="center rojo"><h4 className="subtitulo">Por pagar: {meta.montoPorPagar}</h4></Col>
                     </Row>
                     <Row>
-                        <button className="boton bg-white text-black" onClick={()=>setAgregarMonto(true)}>Agregar monto</button>
+                        <div className="center mb-4 mt-4"><button className="boton bg-white text-black" onClick={()=>setAgregarMonto(true)}>
+                            <div className="center"><FontAwesomeIcon icon={faCirclePlus} color="#63D1C4" className="tamañoBotonIE"/></div>
+                            Agregar monto</button></div>
                     </Row>
 
                 </div>
