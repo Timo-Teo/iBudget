@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1878249b-48a0-43a0-9688-bd4fdeff26f0" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/icons/i-isotipo-ibudget.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/icons/i-user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-banner.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-card-1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-card-2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/public/img/img-logo-ibudget.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/components/layout/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/components/layout/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/ReadexPro-bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/fonts/Roboto-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/pages/ibudget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/pages/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/Footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/Header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/ibudget.css" afterDir="false" />
+    <list default="true" id="1878249b-48a0-43a0-9688-bd4fdeff26f0" name="Changes" comment="final">
+      <change afterPath="$PROJECT_DIR$/Canvaas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Deudas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Metas-Ahorro.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Regla-50-30-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iBudget.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarCategoria.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarCategoria.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarIngreso.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/components/AgregarIngreso.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-front-firebase/src/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/back-front-firebase/src/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +73,14 @@
       <workItem from="1678852239169" duration="178000" />
       <workItem from="1678852439610" duration="408000" />
     </task>
+    <task id="LOCAL-00001" summary="final">
+      <created>1679269947768</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679269947768</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
 </project>
