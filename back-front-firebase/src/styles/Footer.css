@@ -1,0 +1,43 @@
+.footer{
+    width: 1527px;
+    height: 452px;
+    padding: 32px 100px;
+    color: white;
+    background: linear-gradient(180deg, #2B478B 0%, #000000 100%);
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: white;  /* Modern Browsers */
+}
+
+
+body{
+    color: white;
+}
+
+.footer__container {
+    padding-top: 50px;
+    display: grid;
+    align-items: start;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: white;
+}
+
+.footer__container--info{
+
+}
+
+.footer__container--oficinas{
+    padding-left: 33.33%;
+}
+
+.footer__container--redes{
+    padding-left: 33.33%;
+
+}
+
+.subtitulo {
+    padding-bottom: 20px;
+}
